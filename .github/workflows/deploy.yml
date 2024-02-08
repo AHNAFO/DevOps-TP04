@@ -22,11 +22,22 @@ jobs:
           node-version: 18.18.0
 
   deploy:
+    needs: build
     name: Deploy
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
     steps:
       - name: deploy 
         uses: actions/upload-pages-artifact@v2
 
       - name: deploy pages
         uses: actions/deploy-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+    
