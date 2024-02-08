@@ -20,6 +20,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18.18.0
+      - name: Install dependencies
+        run: npm run instal
+      - name: Build project
+        run: npm run build
+          
 
   deploy:
     needs: build
